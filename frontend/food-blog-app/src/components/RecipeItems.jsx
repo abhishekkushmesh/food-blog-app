@@ -1,6 +1,6 @@
 import React from 'react'
 import { useLoaderData } from 'react-router-dom'
-import foodImg from '../assets/foodrecipe.png'
+import foodrecipe from '../assets/banner.png'
 import { BsFillStopwatchFill } from "react-icons/bs";
 import { FaHeart } from "react-icons/fa6";
 
