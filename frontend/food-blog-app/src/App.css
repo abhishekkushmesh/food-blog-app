@@ -1,4 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* --- 1. GLOBAL RESET & VARIABLES --- */
+:root {
+  --primary: #10b981; /* Fresh Emerald Green */
+  --primary-dark: #059669;
+  --bg-color: #f3f4f6; /* Soft Grey */
+  --text-main: #1f2937;
+  --text-light: #6b7280;
+  --white: #ffffff;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --radius: 12px;
+}
 
 * {
   padding: 0;
@@ -7,286 +19,345 @@
   font-family: "Poppins", sans-serif;
 }
 
-header {
-  width: 100vw;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 1px 0 5px rgba(0, 0, 0, 0.2);
-  position: fixed;
-  top:0;
-  z-index: 10;
-  background-color: #ffffff;
+body {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  overflow-x: hidden;
 }
 
-header ul{
-  width: 40%;
-  height: 50px;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
-header ul li{
+ul {
   list-style: none;
-  cursor: pointer;
 }
 
-li a{
-  color: black;
-  transition: all 0.3s;
-  padding:2px 10px;
-  border-radius: 10px;
-}
-
-li a:hover{
-  color:black;
-}
-
-li .login{
-  font-size: 16px;
-  font-weight: 500;
-}
-
-header h2{
-  margin-left: 1rem;
-}
-
-section{
-  height: 100vh;
-  width: 90%;
-  margin: 0 auto;
-}
-
-.home{
-  display: flex;
-  margin-top: 6rem;
-  gap:10rem;
-  position: relative;
-}
-
-.home .left h1{
-  margin-bottom: 1rem;
-}
-
-.home button{
-  color: white;
-  border:none;
-  background-color: #213547;
-  width: 200px;
-  padding: 0.5rem;
-  border-radius: 0;
-}
-
-.home a:hover{
-  color: white;
-  background-color: #2c4860;
-}
-
-.home .left h5{
-  margin:2rem 0;
-}
-
-.bg svg{
-  position: absolute;
-  bottom: 0;
-}
-
-.card-container{
-  width: 80%;
-  margin: auto;
-  display: grid;
-  gap:2.5rem;
-  grid-template-columns: repeat(auto-fit,13rem);
-  cursor:pointer
-}
-
-.card{
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-  text-align: center;
-  border-radius: 5px;
-}
-
-.card-body{
-  background-color: #d4f6e8;
-  padding: 1rem;
-}
-
-.card-body .title{
-  margin-bottom:5px;
-  font-size: 15px;
-  font-weight:500;
-}
-
-.card-body .icons{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.card-body .timer{
-  display: flex;
-  align-items: center;
-  gap:2px;
-  font-size: 13px;
-  font-weight: 500;
-}
-
-.action{
-  display: flex;
-  font-size: 19px;
-  justify-content: space-between;
-  align-items: center;
-  width: 45px;
-}
-
-.editIcon{
-  color: black;
-  font-size: 18px;
-}
-
-.action a:hover{
-  color: black;
-}
-
-.deleteIcon{
-  color: rgb(239,53,53);
-  font-size: 20px;
-  cursor: pointer;
-}
-
-.modal{
-  position: fixed;
-  top: 34%;
-  z-index: 10;
-  padding: 2rem;
-  border-radius: 6px;
-  border:none;
-  left:30%;
-  width: 40%;
-}
-
-.backdrop{
-  position: fixed;
-  top:0;
-  left: 0;
+/* --- 2. HEADER & NAVIGATION --- */
+header {
   width: 100%;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.75);
-  z-index: 9;
-}
-
-.form{
-  width: 71%;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.form-header{
-  background-color: #d4f6e8;
-  height: 3px;
-  text-align: center;
-}
-
-.form-control{
+  padding: 0 5%;
+  height: 70px;
   display: flex;
   justify-content: space-between;
-  gap:1rem;
-  margin-top: 1rem;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  background-color: rgba(255, 255, 255, 0.8); /* Made slightly more transparent to see effect */
+  
+  /* --- FIX IS HERE --- */
+  -webkit-backdrop-filter: blur(10px); /* For Safari/Chrome */
+  backdrop-filter: blur(10px);         /* Standard */
+  /* ------------------- */
+
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.05);
+}
+header h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: -0.5px;
 }
 
-.form-control .input{
-  flex-basis: 70%;
-  border:1px solid rgb(156 163 175);
-  border-radius: 4px;
-  height: 30px;
-  padding: 2px;
+header ul {
+  display: flex;
+  gap: 2rem;
 }
 
-.form-control .input-textarea{
-  border: 1px solid rgb(156 163 175);
-  border-radius: 4px;
-  flex-basis: 70%;
-  padding: 2px;
+header ul li a {
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--text-main);
+  transition: color 0.3s ease;
 }
 
-.form button{
-  margin:2rem 0;
-  border:none;
-  background-color: #d4f6e8;
-  font-size: 14px;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+header ul li a:hover,
+header ul li a.active {
+  color: var(--primary);
 }
 
-.form p{
-  cursor: pointer;
-  display: inline;
-  border-bottom: 1px solid #307bbd;
-  color:rga(4,136,170);
-  font-size: 14px;
-  color: #307bbd;
+header ul li .login {
+  background-color: var(--primary);
+  color: white;
+  padding: 0.5rem 1.2rem;
+  border-radius: 20px;
+  transition: background-color 0.3s;
 }
 
-.form .error{
-  color:red;
-  font-size: 13px;
+header ul li .login:hover {
+  background-color: var(--primary-dark);
 }
-.container{
+
+/* --- 3. HERO SECTION --- */
+section {
+  min-height: 80vh;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100vw;
-  height: 100vh;
+  padding-top: 80px; /* Offset for fixed header */
 }
 
-.add-recipe{
-  width: 100%;
-}
-
-.recipe{
-  margin-bottom: 2rem;
-  padding-bottom: 2rem;
-}
-
-.footer{
-  width:100vw;
-  height: 30px;
-  color: white;
-  background-color: #213547;
-  position: fixed;
-  bottom: 0;
+.home {
+  display: flex;
+  flex-direction: column;
   text-align: center;
-  margin-top: 1rem;
-  padding-top: 2px;
-  font-size: 14px;
-}
-
-.outer-container{
-  width: 70%;
-  margin: 5rem auto;
-}
-
-.outer-container .profile{
-  display: flex;
-  gap:1rem;
   align-items: center;
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-.outer-container .title{
-  margin: 1rem 0;
-  text-transform: uppercase;
+.home .left h1 {
+  font-size: 3rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  color: #111;
 }
 
-.outer-container .recipe-details{
+.home .left h5 {
+  font-size: 1.1rem;
+  color: var(--text-light);
+  font-weight: 400;
+  max-width: 600px;
+  margin: 0 auto 2rem auto;
+}
+
+.home button {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);
+}
+
+.home button:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+/* --- 4. RECIPE CARD GRID (The New Layout) --- */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 2rem 5%;
+  max-width: 1400px;
+  margin: 4rem auto;
+}
+
+.card {
+  background: var(--white);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
   display: flex;
-  gap: 3rem;
-  align-items: justify;
-  margin-top: 1rem;
+  flex-direction: column;
 }
 
-.active{
-  color:black !important;
-  background-color: #d4f6e8;
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
+/* Make images fit perfectly */
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
 
+.card-body {
+  padding: 1.25rem;
+  background-color: white; /* Clean white bg */
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-body .title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text-main);
+}
+
+.card-body .icons {
+  margin-top: auto; /* Pushes icons to bottom */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--text-light);
+  font-size: 0.9rem;
+}
+
+.card-body .timer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.action {
+  display: flex;
+  gap: 15px;
+}
+
+.editIcon, .deleteIcon {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.editIcon:hover { color: var(--primary); }
+.deleteIcon:hover { color: #ef4444; }
+
+/* --- 5. FORMS (Add/Edit Recipe) --- */
+.container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 20px 50px 20px;
+}
+
+.form {
+  background: white;
+  width: 100%;
+  max-width: 500px;
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  text-align: left; /* Better for forms */
+}
+
+.form-header {
+  margin-bottom: 2rem;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-main);
+  background: none; /* Removed the green line */
+}
+
+.form-control {
+  display: flex;
+  flex-direction: column; /* Stack label and input */
+  gap: 0.5rem;
+  margin-bottom: 1.2rem;
+}
+
+.form-control label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-main);
+}
+
+.form-control .input,
+.form-control .input-textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: border-color 0.2s;
+  background-color: #f9fafb;
+}
+
+.form-control .input:focus,
+.form-control .input-textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  background-color: white;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+.form button {
+  width: 100%;
+  margin-top: 1.5rem;
+  padding: 0.9rem;
+  background-color: var(--primary);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.form button:hover {
+  background-color: var(--primary-dark);
+}
+
+/* --- 6. MODALS --- */
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  
+  /* Fix: Add webkit prefix for Safari/iPhone support */
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  
+  z-index: 200;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  width: 90%;
+  max-width: 450px;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  z-index: 210;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from { transform: translate(-50%, -60%); opacity: 0; }
+  to { transform: translate(-50%, -50%); opacity: 1; }
+}
+
+/* --- 7. FOOTER --- */
+.footer {
+  background-color: #111827;
+  color: #9ca3af;
+  text-align: center;
+  padding: 1.5rem;
+  margin-top: auto;
+  font-size: 0.9rem;
+  width: 100%;
+  position: relative;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+  header { padding: 0 1rem; }
+  
+  header ul {
+    gap: 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .home .left h1 { font-size: 2rem; }
+  
+  .card-container {
+    grid-template-columns: 1fr; /* 1 column on mobile */
+    padding: 1rem;
+  }
+}

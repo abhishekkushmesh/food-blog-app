@@ -30,7 +30,7 @@ export default function Navbar() {
   return (
     <>
     <header>
-        <h2>Food Blog</h2>
+        <h2>Food Blog App</h2>
         <ul>
             <li><NavLink to="/">Home</NavLink></li>
            <li><NavLink onClick={()=>isLogin && setIsOpen(true)} to={!isLogin ? "/myRecipe" : "/"}>My Recipe</NavLink></li>

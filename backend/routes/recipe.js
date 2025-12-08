@@ -1,11 +1,31 @@
 const express = require('express');
-const { getRecipes, getRecipe, addRecipe, editRecipe, deleteRecipe, upload } = require('../controller/recipe');
 const router = express.Router();
+const { 
+    getRecipes, 
+    getRecipe, 
+    addRecipe, 
+    editRecipe, 
+    deleteRecipe, 
+    upload, 
+    getMyRecipes, 
+    favoriteRecipe, 
+    getFavoriteRecipes 
+} = require('../controller/recipe');
 
-router.get('/', getRecipes);             // GET all recipes
-router.get('/:id', getRecipe);           // GET a specific recipe by ID
-router.post('/', upload.single('file'), addRecipe); // ✅ POST a new recipe
-router.put('/:id', editRecipe);          // UPDATE a recipe by ID
-router.delete('/:id', deleteRecipe);     // DELETE a recipe by ID
+const verifyToken = require('../middleware/auth'); 
+
+// 1. Specific Routes FIRST (to prevent conflict with :id)
+router.get('/my', verifyToken, getMyRecipes);
+router.get('/fav', verifyToken, getFavoriteRecipes);
+
+// 2. General Routes
+router.get('/', getRecipes);
+router.get('/:id', getRecipe); 
+
+// 3. Action Routes
+router.post('/', verifyToken, upload.single('file'), addRecipe);
+router.put('/fav', verifyToken, favoriteRecipe);
+router.put('/:id', verifyToken, editRecipe);
+router.delete('/:id', deleteRecipe);
 
 module.exports = router;
