@@ -1,7 +1,7 @@
 import React from 'react'
 // CHECK YOUR FOLDER: Ensure the file in 'src/assets' is named exactly 'foodrecipe.png' (all lowercase)
 // If your file is named 'FoodRecipe.png', change this line to: import foodrecipe from '../assets/FoodRecipe.png'
-import foodrecipe from '../assets/foodrecipe.png' 
+import foodrecipe from '../assets/banner.png'
 import RecipeItems from '../components/RecipeItems'
 import { useNavigate } from 'react-router-dom'
 
